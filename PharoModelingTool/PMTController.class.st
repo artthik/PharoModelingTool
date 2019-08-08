@@ -15,13 +15,16 @@ Class {
 
 { #category : #undefined }
 PMTController >> createInstance: anInstanceName [
+	| className instance |
+	className := 'Instance_' , anInstanceName.
 	PMTInstance
-		subclass: 'Instance_' , anInstanceName 
+		subclass: className
 		instanceVariableNames: ''
 		classVariableNames: ''
 		package: self packageName.
-	self model addInstance: anInstanceName.
-	self view addInstance: anInstanceName.
+	instance := className asClass new.
+	self model addInstance: instance.
+	self view addInstance: instance.
 	"instance := blabla new. TODO: how to create a class with only the class name as a string?"
 	"instance := PMTInstance new."
 	"instances add: instance. TODO how to make ArrayLists with classes and [add] them"
@@ -31,14 +34,18 @@ PMTController >> createInstance: anInstanceName [
 
 { #category : #undefined }
 PMTController >> createMessage: aMessageName [
+	| className message |
+	className := 'Message_' , aMessageName.
 	"creates a message"
-	PMTMessage subclass: 'Message_',aMessageName
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: self packageName.
-	self model addMessage: aMessageName.
-	self view addMessage: aMessageName.
-	self inform: 'Message: ', aMessageName, ' has been created.'.
+	PMTMessage
+		subclass: className
+		instanceVariableNames: ''
+		classVariableNames: ''
+		package: self packageName.
+		message := className asClass new.
+	self model addMessage: message.
+	self view addMessage: message.
+	self inform: 'Message: ' , aMessageName , ' has been created.'
 ]
 
 { #category : #undefined }

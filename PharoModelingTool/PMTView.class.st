@@ -19,7 +19,7 @@ PMTView >> addInstance: anObject [
 	| tmpInstance generatedInstance |
 	"TODO: How to turn a string to said object?"
 	"generatedInstance := anObject blabla."
-	generatedInstance := PMTInstance new.
+	generatedInstance := anObject.
 	tmpInstance := PMTInstanceElement new
 		instance: generatedInstance;
 		addEventHandler: BlPullHandler new.
@@ -32,7 +32,7 @@ PMTView >> addMessage: anObject [
 	| tmpMessage generatedMessage |
 	"TODO: How to turn a string to said object?"
 	"generatedInstance := anObject blabla."
-	generatedMessage := PMTMessage new.
+	generatedMessage := anObject.
 	tmpMessage := PMTMessageElement new
 		instance: generatedMessage;
 		addEventHandler: BlPullHandler new.

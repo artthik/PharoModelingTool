@@ -22,13 +22,12 @@ PMTController >> createInstance [
 		subclass: className
 		instanceVariableNames: ''
 		classVariableNames: ''
-		package: self packageName.
+		package: self packageName , '-Instance'.
 	instance := className asClass new.
 	self model addInstance: instance.
 	self view addInstance: instance.
 	"instances add: instance. TODO how to make ArrayLists with classes and [add] them"
-	self
-		inform: 'Instance: ' , className , ' has been created.'
+	self inform: 'Instance: ' , className , ' has been created.'
 ]
 
 { #category : #undefined }
@@ -39,7 +38,7 @@ PMTController >> createMessage [
 		subclass: className
 		instanceVariableNames: ''
 		classVariableNames: ''
-		package: self packageName.
+		package: self packageName,'-Message'.
 	message := className asClass new.
 	self model addMessage: message.
 	self view addMessage: message.

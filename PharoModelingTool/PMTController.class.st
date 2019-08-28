@@ -8,15 +8,16 @@ Class {
 		'packageName',
 		'package',
 		'view',
-		'model'
+		'model',
+		'uid'
 	],
 	#category : #'PharoModelingTool-Controller'
 }
 
 { #category : #undefined }
-PMTController >> createInstance: anInstanceName [
+PMTController >> createInstance [
 	| className instance |
-	className := 'Instance_' , anInstanceName.
+	className := 'Instance_' , uid asRopedText.
 	PMTInstance
 		subclass: className
 		instanceVariableNames: ''
@@ -25,27 +26,24 @@ PMTController >> createInstance: anInstanceName [
 	instance := className asClass new.
 	self model addInstance: instance.
 	self view addInstance: instance.
-	"instance := blabla new. TODO: how to create a class with only the class name as a string?"
-	"instance := PMTInstance new."
 	"instances add: instance. TODO how to make ArrayLists with classes and [add] them"
 	self
-		inform: 'Instance: ' , 'Instance_' , anInstanceName , ' has been created.'
+		inform: 'Instance: ' , className , ' has been created.'
 ]
 
 { #category : #undefined }
-PMTController >> createMessage: aMessageName [
+PMTController >> createMessage [
 	| className message |
-	className := 'Message_' , aMessageName.
-	"creates a message"
+	className := 'Message_UNO'.
 	PMTMessage
 		subclass: className
 		instanceVariableNames: ''
 		classVariableNames: ''
 		package: self packageName.
-		message := className asClass new.
+	message := className asClass new.
 	self model addMessage: message.
 	self view addMessage: message.
-	self inform: 'Message: ' , aMessageName , ' has been created.'
+	self inform: 'Message: ' , className , ' has been created.'
 ]
 
 { #category : #undefined }
@@ -66,6 +64,7 @@ PMTController >> initialize [
 	self model: PMTModel new.
 	self view: PMTView new.
 	self view controller: self.
+	uid:= 0.
 ]
 
 { #category : #accessing }
@@ -108,6 +107,19 @@ PMTController >> packageName [
 { #category : #accessing }
 PMTController >> packageName: aPackageName [
 	packageName := aPackageName
+]
+
+{ #category : #accessing }
+PMTController >> uid [
+	"identifier / over glorified counter"
+
+	uid := uid + 1.
+	^ uid
+]
+
+{ #category : #accessing }
+PMTController >> uid: anInteger [
+	uid:= anInteger.
 ]
 
 { #category : #accessing }

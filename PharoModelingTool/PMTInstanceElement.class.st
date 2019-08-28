@@ -65,5 +65,5 @@ PMTInstanceElement >> instance: anObject [
 	instance := anObject.
 	nameElement text: instance class name asRopedText.
 	attributesElement items: instance class allInstVarNames.
-	methodElement items: instance class methods asOrderedCollection
+	methodElement items: instance class methods asOrderedCollection.
 ]

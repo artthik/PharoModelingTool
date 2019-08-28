@@ -17,8 +17,6 @@ Class {
 { #category : #initialization }
 PMTView >> addInstance: anObject [
 	| tmpInstance generatedInstance |
-	"TODO: How to turn a string to said object?"
-	"generatedInstance := anObject blabla."
 	generatedInstance := anObject.
 	tmpInstance := PMTInstanceElement new
 		instance: generatedInstance;
@@ -30,14 +28,11 @@ PMTView >> addInstance: anObject [
 { #category : #initialization }
 PMTView >> addMessage: anObject [
 	| tmpMessage generatedMessage |
-	"TODO: How to turn a string to said object?"
-	"generatedInstance := anObject blabla."
 	generatedMessage := anObject.
 	tmpMessage := PMTMessageElement new
 		instance: generatedMessage;
 		addEventHandler: BlPullHandler new.
 	container addChild: tmpMessage.
-	"messages add: tmpMessage. TODO how do i do this?"
 ]
 
 { #category : #accessing }
@@ -84,7 +79,7 @@ PMTView >> createNewInstanceButton [
 		beLarge;
 		look: BrGlamorousButtonWithLabelLook new;
 		label: 'New instance';
-		action: [ self controller createInstance: 'ONE'];
+		action: [ self controller createInstance];
 		constraintsDo: [ :c | c horizontal matchParent ];
 		yourself
 ]
@@ -95,9 +90,8 @@ PMTView >> createNewMessageButton [
 		beLarge;
 		look: BrGlamorousButtonWithLabelLook new;
 		label: 'New message';
-		action: [ self controller createMessage: 'UNO' ];
-		constraintsDo: [ :c | 
-			c horizontal exact: 170 ];
+		action: [ self controller createMessage ];
+		constraintsDo: [ :c | c horizontal exact: 170 ];
 		yourself
 ]
 

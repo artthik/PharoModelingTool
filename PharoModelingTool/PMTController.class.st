@@ -17,7 +17,7 @@ Class {
 { #category : #undefined }
 PMTController >> createInstance [
 	| className instance |
-	className := 'Instance_' , uid asRopedText.
+	className := 'Instance_' , self uid asRopedText.
 	PMTInstance
 		subclass: className
 		instanceVariableNames: ''
@@ -34,7 +34,7 @@ PMTController >> createInstance [
 { #category : #undefined }
 PMTController >> createMessage [
 	| className message |
-	className := 'Message_UNO'.
+	className := 'Message_' , self uid asRopedText..
 	PMTMessage
 		subclass: className
 		instanceVariableNames: ''
@@ -111,10 +111,10 @@ PMTController >> packageName: aPackageName [
 
 { #category : #accessing }
 PMTController >> uid [
-	"identifier / over glorified counter"
+	"identifier / over glorifiprintString"
 
 	uid := uid + 1.
-	^ uid
+	^ uid printString
 ]
 
 { #category : #accessing }

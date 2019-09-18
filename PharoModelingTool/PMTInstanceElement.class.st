@@ -19,8 +19,8 @@ PMTInstanceElement >> initialize [
 	self layout: BlLinearLayout vertical.
 	self
 		constraintsDo: [ :c | 
-			c horizontal exact: 200.
-			c vertical exact: 200 ].
+			c horizontal exact: 400.
+			c vertical exact: 400 ].
 	self background: Color white.
 	self look: BrShadowLook.
 	nameElement := BrEditor new

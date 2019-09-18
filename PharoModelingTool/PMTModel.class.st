@@ -16,6 +16,7 @@ Class {
 { #category : #accessing }
 PMTModel >> addInstance: anObject [
 	instances add: anObject.
+	anObject model: self.
 ]
 
 { #category : #accessing }

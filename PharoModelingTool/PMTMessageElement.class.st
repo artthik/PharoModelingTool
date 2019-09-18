@@ -20,7 +20,7 @@ PMTMessageElement >> initialize [
 	self
 		constraintsDo: [ :c | 
 			c horizontal exact: 200.
-			c vertical exact: 200 ].
+			c vertical exact: 400 ].
 	self background: Color gray.
 	self look: BrShadowLook.
 	nameElement := BrEditor new

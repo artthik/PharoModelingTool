@@ -18,11 +18,13 @@ Class {
 PMTController >> createInstance [
 	| className instance |
 	className := 'Instance_' , self uid asRopedText.
-	PMTInstance
+	"PMTInstance
 		subclass: className
 		instanceVariableNames: ''
 		classVariableNames: ''
-		package: self packageName , '-Instance'.
+		package: self packageName , '-Instance'."
+	PMTInstance duplicateClassWithNewName: className.
+	"TODO move class to the right package"
 	instance := className asClass new.
 	self model addInstance: instance.
 	self view addInstance: instance.
@@ -33,12 +35,14 @@ PMTController >> createInstance [
 { #category : #undefined }
 PMTController >> createMessage [
 	| className message |
-	className := 'Message_' , self uid asRopedText..
-	PMTMessage
+	className := 'Message_' , self uid asRopedText.
+	"PMTMessage
 		subclass: className
 		instanceVariableNames: ''
 		classVariableNames: ''
-		package: self packageName,'-Message'.
+		package: self packageName,'-Message'."
+	PMTMessage duplicateClassWithNewName: className.
+	"TODO: move to the right package."
 	message := className asClass new.
 	self model addMessage: message.
 	self view addMessage: message.
@@ -53,6 +57,8 @@ PMTController >> createPackage: aPackageName [
 	tmpPackage := RPackage organizer createPackageNamed: aPackageName.
 	self package: tmpPackage.
 	self packageName: aPackageName.
+	self model packageName: aPackageName.
+	self model package: tmpPackage.
 	self inform: 'Package: ' , packageName , ' has been created.'
 ]
 
